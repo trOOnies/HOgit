@@ -83,6 +83,11 @@ git branch -a
 Hicimos algunos cambios a ejercicios.md luego de crear develop, así que tendremos que lidiar con el resultado final una vez que efectuemos el merge con la branch master. Luego de generar y pushear los cambios a develop, mergeamos:
 
 ```
-Texto
+git add ejercicios.md
+git commit -m "modifico ejercicios.md desde develop"
+git push --set-upstream origin develop
 ```
+
+Notar cómo es necesario configurar remote como la *upstream branch* (branch aguas arriba), pero ésto deja de serlo una vez que genero y pusheo un 2° commit ().
+
 
