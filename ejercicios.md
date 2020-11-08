@@ -63,7 +63,26 @@ Notar cómo ya hicimos uso de dos aspectos vistos en la clase de Git:
 Luego, para cerrar una forma inicial de este archivo, termino de escribir este primer texto en Visual Studio Code y commiteo:
 ```
 git status  # Confirmo que ejercicios.md haya sido modificado
-...
+Acá probablemente tenga un merge conflict
 ```
 
+## Branches
+
+Creamos una nueva branch que se llame develop:
+```
+git checkout develop
+Switched to branch 'develop'
+
+git branch -a
+* develop
+  master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+```
+
+Hicimos algunos cambios a ejercicios.md luego de crear develop, así que tendremos que lidiar con el resultado final una vez que efectuemos el merge con la branch master. Luego de generar y pushear los cambios a develop, mergeamos:
+
+```
+Texto
+```
 
