@@ -98,10 +98,32 @@ C:\Users\facun\Documents\mis_repos\HOgit>git branch -a
   remotes/origin/master
 ```
 
-Acto seguido, creamos una nueva branch que sea de utilidad:
+Creamos una nueva branch que se llame develop:
+
 ```
 git branch develop
+git checkout develop
+Switched to branch 'develop'
 ```
 
+Creamos una nueva branch que se llame develop:
+```
+git checkout develop
+Switched to branch 'develop'
 
+git branch -a
+* develop
+  master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/master
+```
 
+Hicimos algunos cambios a ejercicios.md luego de crear develop, así que tendremos que lidiar con el resultado final una vez que efectuemos el merge con la branch master. Luego de generar y pushear los cambios a develop, mergeamos:
+
+```
+git add ejercicios.md
+git commit -m "modifico ejercicios.md desde develop"
+git push --set-upstream origin develop
+```
+
+Notar cómo es necesario configurar remote como la *upstream branch* (branch aguas arriba), pero ésto deja de serlo una vez que generamos y pusheamos un 2° commit (hash: 1bf749...).
