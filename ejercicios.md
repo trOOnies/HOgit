@@ -118,7 +118,7 @@ git branch -a
   remotes/origin/master
 ```
 
-Hicimos algunos cambios a ejercicios.md luego de crear develop, así que tendremos que lidiar con el resultado final una vez que efectuemos el merge con la branch master. Luego de generar y pushear los cambios a develop, mergeamos:
+Hicimos algunos cambios a <span>ejercicios.md</span> luego de crear develop, así que tendremos que lidiar con el resultado final una vez que efectuemos el merge con la branch master. Luego de generar y pushear los cambios a develop, mergeamos:
 
 ```
 git add ejercicios.md
@@ -127,3 +127,58 @@ git push --set-upstream origin develop
 ```
 
 Notar cómo es necesario configurar remote como la *upstream branch* (branch aguas arriba), pero ésto deja de serlo una vez que generamos y pusheamos un 2° commit (hash: 1bf749...).
+
+Volvemos a master y efectuamos debidamente el merge, apoyándonos de GUI de Visual Studio Code para resolver los conflictos de forma visual:
+```
+git checkout master
+git merge --no-ff develop
+Auto-merging ejercicios.md
+CONFLICT (content): Merge conflict in ejercicios.md
+Automatic merge failed; fix conflicts and then commit the result.
+
+(...Resuelvo el merge conflict...)
+
+git add .
+git commit -m "mergeo master con develop luego de resolver un conflict"
+[master 81b2c20] mergeo master con develop luego de resolver un conflict
+git push
+(...)
+To github.com:trOOnies/HOgit.git
+   f78dbd7..81b2c20  master -> master
+```
+
+Por último, utilizamos la siguiente línea de código -una cierta variante de *git log*- para ver de forma muy rudimentaria el "grafo" del árbol que representa a los snapshots del repositorio:
+
+```
+git log --oneline --graph
+*   81b2c20 (HEAD -> master, origin/master, origin/HEAD) mergeo master con develop luego de resolver un conflict
+|\
+| * 1bf7497 (origin/develop, develop) agrego a ejercicios.md la parte referida a set upstream branch
+| * dccb282 modifico ejercicios.md desde develop
+* | f78dbd7 escribo ejercicios.md hasta el inicio de la branch develop
+|/
+* 2bc9ad9 explico git clone, los commits iniciales e inicio ejercicios.md
+* 4e0cecf (tag: v1.0) vacio la branch para poder empezar con los ejercicios
+* bc6cb4e add git ignore file
+* 373ee43 (tag: v0.1) Cambiado protocolo por defecto a https
+* ed74bb6 Agregados comandos
+*   5339e09 Merge branch 'charlas'
+|\
+| * 5ffe580 M<C3><A1>s cosas de git!
+* |   ab6622e Merge branch 'ejercicios'
+|\ \
+| |/
+|/|
+| * c0e2aa2 Agregamos un nuevo archivo
+|/
+* 0896d0e Info de qu<C3><A9> hacer
+* de70e76 Initial commit
+```
+
+Esta información es la que más comunmente podemos ver de forma más limpia y curada en programas -o módulos dentro de ellos- tales como Sourcetree, PyCharm, etc.
+
+## Cierre
+
+¡Listo! Posterior a realizar los pasos hasta pushear la versión final de <span>ejercicios.md</span>, hemos completado la guía de ejercicios.
+
+-Scasso, Facundo M.
